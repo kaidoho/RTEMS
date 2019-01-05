@@ -55,9 +55,9 @@ librtemsbsp_a_SOURCES += ../../../../../../bsps/shared/start/stackalloc.c
 
 # Startup
 librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/shared/start/bsp-start-memcpy.S
-#librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/start/bspstart.c
-#librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/start/bspstarthook.c
-#librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/start/bspreset.c
+librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/start/bspstart.c
+librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/start/bspstarthook.c
+librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/start/bspreset.c
 #librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/start/io.c
 #librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/start/rcc.c
 #librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/start/start-config-io.c
@@ -72,7 +72,7 @@ librtemsbsp_a_SOURCES += ../../../../../../bsps/shared/dev/serial/legacy-console
 librtemsbsp_a_SOURCES += ../../../../../../bsps/shared/dev/serial/legacy-console-control.c
 librtemsbsp_a_SOURCES += ../../../../../../bsps/shared/dev/serial/legacy-console-select.c
 librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/console/console-config.c
-#librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/console/usart.c
+librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/stm32f7xx/console/usart.c
 
 # Clock
 librtemsbsp_a_SOURCES += ../../../../../../bsps/arm/shared/clock/clock-armv7m.c
