@@ -31,11 +31,26 @@
 #include <bsp/irq.h>
 #include <bsp/usart.h>
 #include <bsp/stm32f7xxxx.h>
-
+#include <stm32f7xx.h>
+#include <stm32f7xx_hal.h>
+UART_HandleTypeDef ConsoleUart;
 
 static void usart_initialize(int minor)
 {
-  return;
+	ConsoleUart.Instance        	= USART2;
+	ConsoleUart.Init.BaudRate   	= 115200;
+	ConsoleUart.Init.WordLength 	= UART_WORDLENGTH_8B;
+  ConsoleUart.Init.StopBits   	= UART_STOPBITS_1;
+  ConsoleUart.Init.Parity     	= UART_PARITY_NONE;
+  ConsoleUart.Init.HwFlowCtl  	= UART_HWCONTROL_NONE;
+  ConsoleUart.Init.Mode       	= UART_MODE_TX_RX;
+  ConsoleUart.Init.OverSampling = UART_OVERSAMPLING_16;
+
+  if (HAL_UART_Init(&ConsoleUart) != HAL_OK)
+  {
+
+  }
+
 }
 
 static int usart_first_open(int major, int minor, void *arg)
@@ -55,6 +70,13 @@ static int usart_read_polled(int minor)
 
 static void usart_write_polled(int minor, char c)
 {
+
+	if(HAL_UART_STATE_RESET == ConsoleUart.gState)
+	{
+		usart_initialize(minor);
+	}
+	HAL_UART_Transmit(&ConsoleUart, (uint8_t *)&c, 1, 0xFFFF);
+
   return;
 }
 

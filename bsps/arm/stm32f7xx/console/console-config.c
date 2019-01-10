@@ -33,12 +33,18 @@
 #include <bsp/irq.h>
 #include <bsp/usart.h>
 #include <bsp/stm32f7xxxx.h>
+#include <stm32f7xx.h>
+#include <stm32f7xx_hal.h>
+UART_HandleTypeDef ConsoleUart;
+
 
 console_tbl Console_Configuration_Ports [] = {
     {
       .sDeviceName = "/dev/console",
       .deviceType = SERIAL_CUSTOM,
       .pDeviceFns = &stm32f7xx_usart_fns,
+      .ulCtrlPort1 = (uint32_t) USART2,
+      .ulCtrlPort2 = 1,
 #if    defined( STM32F7XX_ENABLE_CONSOLE_USART_1)
       .ulCtrlPort1 = (uint32_t) USART1,
       .ulCtrlPort2 = 0,
@@ -81,9 +87,9 @@ unsigned long Console_Configuration_Count = PORT_COUNT;
 static void output_char(char c)
 {
   const console_fns *con =
-    Console_Configuration_Ports [Console_Port_Minor].pDeviceFns;
+    Console_Configuration_Ports [0].pDeviceFns;
 
-  con->deviceWritePolled((int) Console_Port_Minor, c);
+  con->deviceWritePolled(0, c);
 }
 
 BSP_output_char_function_type BSP_output_char = output_char;

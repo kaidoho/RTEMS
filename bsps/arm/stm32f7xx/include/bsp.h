@@ -41,10 +41,15 @@
 #ifndef LIBBSP_ARM_NUCLEO_STM32F746ZG_BSP_H
 #define LIBBSP_ARM_NUCLEO_STM32F746ZG_BSP_H
 
+
+
 #include <bspopts.h>
 #include <bsp/default-initial-extension.h>
 
 #include <rtems.h>
+
+
+
 
 #ifdef __cplusplus
 extern "C" {
